@@ -2,5 +2,5 @@
 ssh_server_config_file: /etc/ssh/sshd_config
 ssh_server_config_folder: "{{ ssh_server_config_file }}.d"
 
-ssh_server_enabled: yes
-ssh_server_service_enabled: yes
+ssh_server_enabled: true
+ssh_server_service_enabled: true
