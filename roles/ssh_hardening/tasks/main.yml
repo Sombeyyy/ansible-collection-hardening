@@ -29,3 +29,13 @@
 - name: Parse raw OpenSSH version
   ansible.builtin.set_fact:
     sshd_version: "{{ sshd_version_raw.stderr | regex_replace('OpenSSH_([0-9]+\.[0-9]+).*', '\\1') }}"
+
+- name: Create hardened sshd_config
+  ansible.builtin.template:
+    src: sshd_config.j2
+    dest: "{{ ssh_server_config_file }}"
+    owner: "{{ ssh_owner }}"
+    group: "{{ ssh_group }}"
+    mode: "0600"
+    backup: yes
+  notify: Restart sshd
