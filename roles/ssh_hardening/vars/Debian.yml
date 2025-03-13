@@ -1,0 +1,8 @@
+---
+ssh_packages:
+  - openssh-client
+  - openssh-server
+ssh_owner: root
+ssh_group: root
+
+sshd_service_name: ssh

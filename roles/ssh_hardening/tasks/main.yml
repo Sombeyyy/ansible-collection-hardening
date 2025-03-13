@@ -1,0 +1,20 @@
+---
+- name: Load OS-specific variables
+  ansible.builtin.include_vars:
+    file: "{{ item }}"
+    name: os_vars
+  with_first_found:
+    - files:
+        - "{{ ansible_distribution }}.yml"
+        - "{{ ansible_os_family }}.yml"
+      skip: true
+
+- name: Set variables from OS-spcific values (if not already defined)
+  ansible.builtin.set_fact:
+    "{{ item.key }}": "{{ item.value }}"
+  with_dict: "{{ os_vars }}"
+  when: not lookup('varnames' '^' + item.key + '$')
+
+- name: Install OpenSSH packages and ensure config file permissions
+  ansible.builtin.include_tasks:
+    file: install.yml

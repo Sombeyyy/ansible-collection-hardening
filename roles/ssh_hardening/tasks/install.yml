@@ -1,0 +1,21 @@
+---
+- name: Install OpenSSH package(s)
+  ansible.builtin.package:
+    name: "{{ package }}"
+    state: present
+  loop: "{{ ssh_packages }}"
+  loop_control:
+    loop_var: package
+
+- name: Ensure SSH server config file has correct permissions
+  ansible.builtin.file:
+    path: "{{ ssh_server_config_file }}"
+    state: file
+    owner: "{{ ssh_owner }}"
+    group: "{{ ssh_group }}"
+    mode: "0600"
+
+- name: Enable/Disable SSH server
+  ansible.builtin.service:
+    name: "{{ sshd_service_name }}"
+    enabled: "{{ ssh_server_service_enabled }}"
