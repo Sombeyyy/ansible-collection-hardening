@@ -25,18 +25,18 @@ LogLevel {{ ssh_server_log_level }}
 # Authentication
 # ==============
 LoginGraceTime {{ ssh_server_login_grace_time }}
-PermitRootLogin {{ ssh_server_permit_root_login }}
-StrictModes {{ ssh_server_strict_modes }}
+PermitRootLogin {{ 'yes' if (ssh_server_permit_root_login | bool) else 'no' }}
+StrictModes {{ 'yes' if (ssh_server_strict_modes | bool) else 'no' }}
 MaxAuthTries {{ ssh_server_max_auth_tries }}
 MaxSessions {{ ssh_server_max_sessions }}
 AuthenticationMethods {{ ssh_server_authentication_methods }}
-PubkeyAuthentication {{ ssh_server_pubkey_authentication }}
-PasswordAuthentication {{ ssh_server_password_authentication }}
-KbdInteractiveAuthentication {{ ssh_server_kbd_interactive_authentication }}
-ChallengeResponseAuthentication {{ ssh_server_challenge_response_authentication }}
-UsePAM {{ ssh_server_use_pam }}
-IgnoreRhosts {{ ssh_server_ignore_rhosts }}
-HostbasedAuthentication {{ ssh_server_host_based_authentication }}
+PubkeyAuthentication {{ 'yes' if (ssh_server_pubkey_authentication | bool) else 'no' }}
+PasswordAuthentication {{ 'yes' if (ssh_server_password_authentication | bool) else 'no' }}
+KbdInteractiveAuthentication {{ 'yes' if (ssh_server_kbd_interactive_authentication | bool) else 'no' }}
+ChallengeResponseAuthentication {{ 'yes' if (ssh_server_challenge_response_authentication | bool) else 'no' }}
+UsePAM {{ 'yes' if (ssh_server_use_pam | bool) else 'no' }}
+IgnoreRhosts {{ 'yes' if (ssh_server_ignore_rhosts | bool) else 'no' }}
+HostbasedAuthentication {{ 'yes' if (ssh_server_host_based_authentication | bool) else 'no' }}
 PermitEmptyPasswords {{ 'yes' if (ssh_server_permit_empty_passwords | bool) else 'no' }}
 
 # <start>:<rate>:<full>
