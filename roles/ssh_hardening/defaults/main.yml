@@ -4,3 +4,38 @@ ssh_server_config_folder: "{{ ssh_server_config_file }}.d"
 
 ssh_server_enabled: true
 ssh_server_service_enabled: true
+
+ssh_server_ports: ["22"]
+ssh_server_listen_addresses: ["0.0.0.0", "::"]
+
+ssh_server_syslog_facility: AUTH
+ssh_server_log_level: INFO
+
+ssh_server_login_grace_time: 120
+ssh_server_permit_root_login: "no"
+ssh_server_strict_mode: "yes"
+ssh_server_max_auth_tries: 6
+ssh_server_max_sessions: 10
+ssh_server_authentication_methods: publickey
+ssh_server_pubkey_authentication: "yes"
+ssh_server_password_authentication: "no"
+ssh_server_kbd_interactive_authentication: "no"
+ssh_server_challenge_response_authentication: "no"
+ssh_server_use_pam: "yes" # TODO: 'no' may break modern systems
+ssh_server_ignore_rhosts: "yes"
+ssh_server_host_based_authentication: "no"
+ssh_server_permit_empty_passwords: "no"
+ssh_server_max_startups: "10:30:100"
+
+ssh_server_permit_tunnel: "no"
+ssh_server_disable_forwarding: "yes"
+ssh_server_allow_tcp_forwarding: "no"
+ssh_server_allow_agent_forwarding: "no"
+ssh_server_gateway_ports: "no"
+ssh_server_x11_forwarding: "no"
+
+ssh_server_permit_user_environment: "no"
+
+ssh_server_internal_sftp: true
+
+network_ipv6_enabled: true
