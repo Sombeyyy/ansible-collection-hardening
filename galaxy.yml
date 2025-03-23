@@ -1,0 +1,21 @@
+---
+namespace: sombeyyy
+name: hardening
+version: 1.0.0
+readme: README.md
+authors:
+  - Bastian Dieregsweiler <contact@sombeyyy.de>
+description: An Ansible collection for automating system and application hardening with security best practices and configurations.
+license:
+  - MIT
+license_file: LICENSE
+tags:
+  - hardening
+  - security
+  - linux
+  - debian
+  - redhat
+repository: "https://github.com/sombeyyy/ansible-collection-hardening"
+issues: "https://github.com/sombeyyy/ansible-collection-hardening/issues"
+build_ignore:
+  - .gitignore
